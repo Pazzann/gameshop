@@ -11,71 +11,8 @@
         });
     }
 
-    let items = [
-        {
-            title: "Game",
-            imageId: ["5319238.png"],
-            desc: "This is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable game",
-            price: "30$",
-            rating: "4",
-            code: 1,
-            type: "Physical",
-            platforms: ["PS4", "XBOX", "SWITCH", "PC"],
-            reviews: 5
-        },
-        {
-            title: "Game",
-            imageId: ["5319238.png"],
-            desc: "This is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable game",
-            price: "30$",
-            rating: "4",
-            code: 1,
-            type: "Physical",
-            platforms: ["PS4", "XBOX", "SWITCH", "PC"],
-            reviews: 5
-        },
-        {
-            title: "Game",
-            imageId: ["5319238.png"],
-            desc: "This is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable game",
-            price: "30$",
-            rating: "4",
-            code: 1,
-            type: "Physical",
-            platforms: ["PS4", "XBOX", "SWITCH", "PC"],
-            reviews: 5
-        }, {
-            title: "Game",
-            imageId: ["5319238.png"],
-            desc: "This is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable game",
-            price: "30$",
-            rating: "4",
-            code: 1,
-            type: "Physical",
-            platforms: ["PS4", "XBOX", "SWITCH", "PC"],
-            reviews: 5
-        }, {
-            title: "Game",
-            imageId: ["5319238.png"],
-            desc: "This is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable game",
-            price: "30$",
-            rating: "4",
-            code: 1,
-            type: "Physical",
-            platforms: ["PS4", "XBOX", "SWITCH", "PC"],
-            reviews: 5
-        }, {
-            title: "Game",
-            imageId: ["5319238.png"],
-            desc: "This is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable gameThis is an enjoyable game",
-            price: "30$",
-            rating: "4",
-            code: 1,
-            type: "Physical",
-            platforms: ["PS4", "XBOX", "SWITCH", "PC"],
-            reviews: 5
-        }]
-    items = [...items, ...items, ...items]
+    export let products;
+    $: items = products;
 
     let isCollapsed = false;
 
@@ -93,14 +30,27 @@
             some filters go here
         </div>
     </div>
-    <div class="searchRes">
-        {#each items as item}
-            <Item on:changePage={changePageToViewier} item={item}></Item>
-        {/each}
-    </div>
+    {#if !items}
+        <div class="loading">
+            Loading
+        </div>
+    {:else }
+        <div class="searchRes">
+            {#each items as item}
+                <Item on:changePage={changePageToViewier} item={item}></Item>
+            {/each}
+        </div>
+    {/if}
+
 </div>
 
 <style>
+    .loading{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
     .main {
         display: flex;
         width: 100%;
@@ -113,7 +63,6 @@
         width: 20%;
         background: #141416;
         height: 100%;
-
         color: #fff;
         font-family: "Comfortaa", sans-serif;
     }
@@ -165,9 +114,7 @@
         outline: none;
         border: none;
         border-radius: 9px;
-
         cursor: pointer;
-
         display: flex;
         justify-content: center;
         align-items: center;

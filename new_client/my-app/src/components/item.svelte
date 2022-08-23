@@ -1,7 +1,5 @@
 <script>
     import {createEventDispatcher} from "svelte";
-    //
-    // export let siteUser;
     export let item;
     let on = false;
     const pageDispatch = createEventDispatcher();
@@ -17,21 +15,20 @@
 <div class="item" class:itemhover={on} on:mouseenter={()=>on=true} on:mouseleave={()=>on=false}
      on:click={changePageToViewier}>
     <div class="content">
-        <img src="http://localhost:3001/api/item/image/{item.imageId[0]}" alt="don't appear that image is loaded"/>
+        <img src="http://localhost:3001/api/item/image/{item.imageIds[0]}" alt="don't appear that image is loaded"/>
         <div class="textInItem">
-            <span class="itemText"><span class="argument">Name: </span>{item.title}</span>
-            <span class="itemText"><span class="argument">Desc: </span>{item.desc.split('').slice(0, 54).join('')}
+            <span class="itemText"><span class="argument">Name: </span>{item.name}</span>
+            <span class="itemText"><span class="argument">Desc: </span>{item.desc.split('').slice(0, 30).join('')}
                 ...</span>
             <span class="itemText"><span class="argument">Platforms: </span>
                 {#each item.platforms as platform} <img class="platformimg"
                                                         src="http://localhost:3001/api/images/{platform}.png"
                                                         alt={platform}/>{/each}</span>
-            <span class="itemText"><span class="argument">Rating: </span>{item.rating}</span>
-            <span class="itemText"><span class="argument">Reviews: </span>{item.reviews}</span>
+            <span class="itemText"><span class="argument">Rating: </span>{item.rating ?? 0} / 5</span>
+            <span class="itemText"><span class="argument">Reviews: </span>{item.reviews ?? 0}</span>
             <span class="itemText price"><span class="argument priceText">Price: </span><span
                     class="priceValue">{item.price}</span></span>
         </div>
-
     </div>
 </div>
 
@@ -47,10 +44,10 @@
     }
 
     .priceValue {
-        font-family: Impact;
+        font-family: Comfortaa;
         position: absolute;
         right: 3px;
-        bottom: 5px;
+        bottom: 1px;
         font-weight: bold
     }
 
@@ -63,13 +60,13 @@
     .itemText {
         display: flex;
         gap: 10px;
-        color: white;
+        color: #c2c2c2;
     }
 
     .textInItem {
         display: flex;
         flex-direction: column;
-        gap: 1px;
+        gap: 3px;
         font-size: 20px;
     }
 
@@ -131,6 +128,7 @@
         #ff0055, #ff0000, #ffff00, #00ff00, #0099ff, #001aff, #a200ff
         );
         transition: all 640ms;
+        filter: blur(0px);
     }
 
     .item:hover::after, .item:hover::before {
@@ -160,5 +158,4 @@
             background-position: 250%;
         }
     }
-
 </style>

@@ -8,20 +8,26 @@
     let user;
 
     onMount(async () => {
-        const res = await fetch('http://localhost:3001/api/user', {credentials: "include"});
+        const res = await fetch('http://localhost:3001/api/auth/user', {credentials: "include"});
         if (res.ok) {
             const data = await res.json();
             loggedIn = data.loggedIn;
             user = data.user;
+            if(user.access === 1){
+                isAdmin = true
+            }
+            loadUser(user, loggedIn);
         }
     });
 
     function logout(event) {
-        console.log(1);
+        fetch('http://localhost:3001/api/auth/logout', {credentials: "include"});
         loggedIn = false;
+        isAdmin = false;
     }
 
     const pageDispatch = createEventDispatcher();
+
 
     function changePageToMain() {
         pageDispatch('changePage', {
@@ -34,6 +40,15 @@
             index: 1
         });
     }
+
+    const userDispatch = createEventDispatcher();
+    function loadUser(user, loggedIn){
+        userDispatch('login', {
+            loggedIn: loggedIn,
+            user: user
+        });
+    }
+
 </script>
 
 
@@ -53,12 +68,12 @@
             {#if !loggedIn}
                 <a
                         class="button"
-                        href="https://discord.com/api/oauth2/authorize?client_id=1010914040584871966&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fapi%2Fcallback&response_type=code&scope=identify"
+                        href="https://discord.com/api/oauth2/authorize?client_id=1010914040584871966&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fapi%2Fauth%2Fcallback&response_type=code&scope=identify"
                 >
                     login
                 </a>
             {:else}
-                <Profile on:logout={logout} name={user.username} id={user.id} imgId={user.avatar}/>
+                <Profile on:logout={logout} name={user.username} id={user.userid} imgId={user.userImageId}/>
             {/if}
         </nav>
     </div>
@@ -102,14 +117,14 @@
     }
 
     .search > input:hover {
-        background: #1f1f1f;
+        background: #525252;
     }
 
     .search > input {
 
         width: 100%;
         min-height: 44px;
-        background: #000000;
+        background:  #1f1f1f;
         border-radius: 9px;
         border: none;
         padding: 0 20px;
