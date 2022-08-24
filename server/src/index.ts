@@ -6,6 +6,7 @@ import {IConfigProps} from "./Features/interfaces/IConfigProps";
 import Item from "./classes/Item";
 import Items from "./api/item/items";
 import Login from "./api/login/login";
+import User from "./api/user/user";
 
 
 const config: IConfigProps = require('../config.json')
@@ -42,6 +43,7 @@ app.use("/api/items", Items);
 app.use("/api/images", GetImage);
 app.use("/api/auth", Login);
 app.use("/api/item/image", GetItemImage);
+app.use("/api/user", User);
 
 app.listen(3001, "localhost", () => {
     console.log("Started listening to localhost:3001")

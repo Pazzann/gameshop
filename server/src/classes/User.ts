@@ -6,7 +6,7 @@ export interface ISQLUserData{
     userName: string;
     userImageId: string;
     access: number;
-    basket: number;
+    basket: string;
 }
 
 export default class User implements IUserProps{
@@ -51,10 +51,18 @@ export default class User implements IUserProps{
             username: sqlData.userName,
             userImageId: sqlData.userImageId,
             access: sqlData.access,
-            basket: new Array(sqlData.basket).map(num=>Number(num))
+            basket: sqlData.basket.split(", ").map(num=>Number(num))
         }
     }
-
+    public static async updateBasket(newBasket: number[], id: string){
+        let basket = "";
+        for (let i = 0; i < newBasket.length-1; i++){
+            basket += newBasket[i];
+            basket += ", ";
+        }
+        basket += newBasket[newBasket.length-1];
+        mySQLConnection.reqQuery("UPDATE users SET basket = ? WHERE userid = ?;", basket, id);
+    }
     public static async getUser(user: any): Promise<User>{
         const data = await mySQLConnection.reqQuery("SELECT * FROM users WHERE userid = ?;", user.id);
         if(data){
