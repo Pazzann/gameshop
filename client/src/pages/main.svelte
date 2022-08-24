@@ -1,5 +1,5 @@
 <script>
-    import Item from "../components/item.svelte";
+    import Product from "../components/item.svelte";
     import {createEventDispatcher} from "svelte";
 
     const pageDispatch = createEventDispatcher();
