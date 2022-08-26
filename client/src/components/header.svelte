@@ -1,18 +1,19 @@
 <script>
     import Profile from './profile.svelte'
     import {createEventDispatcher, onMount} from "svelte";
-
+    import Cookies from "universal-cookie";
+    const cookies = new Cookies();
     let loggedIn = false;
     let isAdmin = false;
     let searchValue;
     let user;
 
     onMount(async () => {
-        const res = await fetch('http://localhost:3001/api/auth/user', {credentials: "include"});
+        const res = await fetch('http://localhost:3001/api/users/me', {headers: {authorization: `Bearer ${cookies.get("token")}`}});
         if (res.ok) {
-            const data = await res.json();
-            loggedIn = data.loggedIn;
-            user = data.user;
+            user = await res.json();
+            loggedIn = true;
+
             if(user.access === 1){
                 isAdmin = true
             }
@@ -54,7 +55,7 @@
 <header>
     <div class="header">
         <div class="header-name" on:click={changePageToMain}>
-            <img src="http://localhost:3001/api/images/shopavatar.jpg" alt="logo goes here">
+            <img src="/images/shopavatar.jpg" alt="logo goes here">
             <span>GAMESHOP</span>
         </div>
 
@@ -67,12 +68,12 @@
             {#if !loggedIn}
                 <a
                         class="button"
-                        href="https://discord.com/api/oauth2/authorize?client_id=1010914040584871966&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fapi%2Fauth%2Fcallback&response_type=code&scope=identify"
+                        href="https://discord.com/api/oauth2/authorize?client_id=1010914040584871966&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fapi%2Flogin%2Fcallback&response_type=code&scope=identify"
                 >
                     login
                 </a>
             {:else}
-                <Profile on:logout={logout} name={user.username} id={user.userid} imgId={user.userImageId}/>
+                <Profile on:logout={logout} name={user.userName} id={user.userid} imgId={user.userImageId}/>
             {/if}
         </nav>
     </div>

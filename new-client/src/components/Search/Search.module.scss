@@ -1,0 +1,26 @@
+.search {
+    max-width: 500px;
+}
+
+.search > input:hover {
+    background: #525252;
+}
+
+.search > input {
+
+    width: 100%;
+    min-height: 44px;
+    background:  #1f1f1f;
+    border-radius: 9px;
+    border: none;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #ffffff;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.search > input:focus {
+    background: #ffffff;
+    outline: none;
+    color: black;
+}

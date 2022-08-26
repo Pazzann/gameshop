@@ -17,7 +17,7 @@
 
     let products;
     onMount(async () => {
-        const res = await fetch(`http://localhost:3001/api/items`, {credentials: "include"});
+        const res = await fetch(`http://localhost:3001/api/products`);
         if (res.ok) {
             const data = await res.json();
             products = data;

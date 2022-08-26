@@ -15,14 +15,14 @@
 <div class="item" class:itemhover={on} on:mouseenter={()=>on=true} on:mouseleave={()=>on=false}
      on:click={changePageToViewier}>
     <div class="content">
-        <img src="http://localhost:3001/api/item/image/{item.imageIds[0]}" alt="don't appear that image is loaded"/>
+        <img src={item.imageIds[0].includes("http") ? item.imageIds[0] : `http://localhost:3001/api/images/assets/${item.imageIds[0]}`} alt="don't appear that image is loaded"/>
         <div class="textInItem">
-            <span class="itemText"><span class="argument">Name: </span>{item.name}</span>
-            <span class="itemText"><span class="argument">Desc: </span>{item.desc.split('').slice(0, 30).join('')}
+            <span class="itemText"><span class="argument">Name: </span>{item.title}</span>
+            <span class="itemText"><span class="argument">Desc: </span>{item.description.split('').slice(0, 30).join('')}
                 ...</span>
             <span class="itemText"><span class="argument">Platforms: </span>
                 {#each item.platforms as platform} <img class="platformimg"
-                                                        src="http://localhost:3001/api/images/{platform}.png"
+                                                        src="/images/{platform}.png"
                                                         alt={platform}/>{/each}</span>
             <span class="itemText"><span class="argument">Rating: </span>{item.rating ?? 0} / 5</span>
             <span class="itemText"><span class="argument">Reviews: </span>{item.reviews ?? 0}</span>

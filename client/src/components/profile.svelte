@@ -1,12 +1,14 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import Cookies from 'universal-cookie';
+    const cookies = new Cookies();
     export let id;
     export let name;
     export let imgId;
 
     const dispatch = createEventDispatcher();
     function logout(){
-        fetch('http://localhost:3001/api/auth/logout' , {credentials: "include"});
+        cookies.remove("token");
         dispatch('logout', {
             text: 'Hello!'
         });

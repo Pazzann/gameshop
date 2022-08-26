@@ -1,0 +1,51 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.button {
+    border: solid 2px white;
+    display: flex;
+    align-items: center;
+    font-family: Comfortaa;
+    text-decoration: none;
+    border-radius: 8px;
+    min-height: 44px;
+    padding: 0 2rem;
+    background: gray;
+    color: white;
+    font-size: 20px;
+    transition: all 320ms;
+}
+
+.button:hover {
+    transform: scale(1.2);
+    background: #000517;
+    cursor: pointer;
+}
+
+.user{
+    font-family: Comfortaa, sans-serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    transition: all 320ms;
+    background: gray;
+    padding-right:  0.5rem;
+    border-radius: 13px;
+}
+
+.user>img{
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    margin-right: 20px;
+}
+.user:hover{
+    transform: scale(1.2);
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+    cursor: pointer;
+}

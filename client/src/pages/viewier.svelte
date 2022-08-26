@@ -17,7 +17,7 @@
     let minScale = 0.1;
     let maxScale = 20;
     async function addBasket(){
-        const res = await fetch(`http://localhost:3001/api/user/basket/${item.code}`, {credentials: "include"});
+        const res = await fetch(`http://localhost:3001/api/users/basket/${item.code}`, {credentials: "include", method: "PUT"});
         if(res.ok){
             const data = await res.json();
             console.log(data);
@@ -32,7 +32,7 @@
 
     }
     async function removeBasket(){
-        const res = await fetch(`http://localhost:3001/api/user/removebasket/${item.code}`, {credentials: "include"});
+        const res = await fetch(`http://localhost:3001/api/users/basket/${item.code}`, {credentials: "include", method: "DELETE"});
         if(res.ok){
             const data = await res.json();
             console.log(data);
@@ -55,7 +55,7 @@
                     {#each item.imageIds as link}
                         <div class="imageInBar" on:click={()=>{imageLink=link}} class:imageSelected={imageLink===link}>
 
-                            <img src="http://localhost:3001/api/item/image/{link}"
+                            <img src={link.includes("http") ? link : `http://localhost:3001/api/images/assets/${link}`}
                                  alt="Some error with loading occured"/>
 
                         </div>
@@ -72,18 +72,18 @@
                         {minScale}
                         {maxScale}
                 >
-                    <img src="http://localhost:3001/api/item/image/{imageLink}"
+                    <img src={imageLink.includes("http") ? imageLink : `http://localhost:3001/api/images/assets/${imageLink}`}
                          alt="Some error with loading occured"/>
                 </Zoomable>
             </div>
         </div>
         <div class="info">
-            <!--{JSON.stringify(item)}-->
+
             <h1>{item.name}</h1>
             <span class="platforms">
                 {#each item.platforms as platform}
                     <img class="platformimg"
-                         src="http://localhost:3001/api/images/{platform}.png"
+                         src="/images/{platform}.png"
                          alt={platform}/>
                 {/each}
             </span>
@@ -134,6 +134,7 @@
         transition: all 320ms;
         width: 250px;
         margin: auto;
+        z-index: 100;
     }
 
     .mainViewierContent {
@@ -193,7 +194,7 @@
         align-items: center;
         justify-content: center;
         z-index: 1;
-
+        /*padding-top: 250px;*/
     }
 
     .imageInBar {
@@ -223,7 +224,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        max-height: 80vh;
+        max-height: 100vh;
+        padding: 30px;
     }
 
     .mainImage > img {
