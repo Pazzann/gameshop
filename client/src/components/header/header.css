@@ -1,0 +1,100 @@
+.adminHidden {
+    visibility: hidden;
+}
+
+.button {
+    border: solid 2px white;
+    display: flex;
+    align-items: center;
+    font-family: Comfortaa;
+    text-decoration: none;
+    border-radius: 8px;
+    min-height: 44px;
+    padding: 0 2rem;
+    background: gray;
+    color: white;
+    font-size: 20px;
+    transition: all 320ms;
+}
+
+.button:hover {
+    transform: scale(1.2);
+    background: #000517;
+    cursor: pointer;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    gap: 20px;
+}
+
+.search {
+    width: 100%;
+}
+
+.search > input:hover {
+    background: #525252;
+}
+
+.search > input {
+
+    width: 100%;
+    min-height: 44px;
+    background: #1f1f1f;
+    border-radius: 9px;
+    border: none;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #ffffff;
+    transition: background-color 0.4s ease-in-out;
+}
+
+.search > input:focus {
+    background: #ffffff;
+    outline: none;
+    color: black;
+}
+
+@font-face {
+    font-family: ubuntu-name;
+    src: url("../../fonts/UbuntuCondensed-Regular.ttf");
+}
+
+.header {
+    height: 90px;
+    width: 100%;
+    background: black;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    align-items: center;
+}
+
+.header-name {
+    display: flex;
+    align-items: center;
+    transition: all 320ms;
+}
+
+.header-name > img {
+    width: 60px;
+    height: 60px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.header-name:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.header-name > span {
+    font-family: ubuntu-name;
+    font-size: 40px;
+    text-decoration: none;
+    color: white;
+}

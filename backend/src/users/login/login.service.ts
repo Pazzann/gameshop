@@ -25,7 +25,7 @@ export class LoginService {
       scope: ['identify'],
     });
     const user = await this.oauth.getUser(token.access_token);
-    const userdb = await UserEntity.findOneBy(user.id);
+    const userdb = await UserEntity.findOneBy({ userid: user.id });
     if (!userdb)
       await UserEntity.create({
         userid: user.id,

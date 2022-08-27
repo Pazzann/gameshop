@@ -1,0 +1,62 @@
+.info > a {
+    border: solid 2px white;
+    display: flex;
+    align-items: center;
+    font-family: Comfortaa;
+    text-decoration: none;
+    border-radius: 8px;
+    min-height: 44px;
+    padding: 0 2rem;
+    background: #5dc47c;
+    color: white;
+    font-size: 23px;
+    transition: all 320ms;
+    width: 250px;
+    margin: auto;
+    z-index: 100;
+    text-align: center;
+}
+
+
+
+.info > h1 {
+    font-family: ubuntu-name;
+    color: #d7d7d7;
+    font-size: 45px;
+    text-align: center;
+}
+.info > span {
+    color: white;
+    font-family: Comfortaa;
+    font-size: 30px;
+    text-align: left;
+}
+.info > span > span{
+    color: #d7d7d7;
+}
+
+
+.info {
+    width: 35%;
+    background: #141416;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
+    gap: 30px;
+}
+
+.info > a:hover {
+    transform: scale(1.2);
+    background: #19a640;
+    cursor: pointer;
+}
+.platforms > img {
+    width: 60px;
+    height: 60px;
+}
+.platforms{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

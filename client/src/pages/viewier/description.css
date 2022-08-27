@@ -1,0 +1,14 @@
+.description{
+    background: #212125;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+
+.description > span{
+    color: #d7d7d7;
+    font-family: Comfortaa;
+    font-size: 30px;
+}

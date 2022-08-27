@@ -1,0 +1,23 @@
+@import "images.css";
+@import "info.css";
+@import "description.css";
+
+.invisible {
+    visibility: hidden;
+}
+
+.barWrapper {
+    padding: 10px;
+    width: 300px;
+}
+
+.viewier {
+    overflow-y: scroll;
+}
+
+.desc-comments {
+    height: 800px;
+}
+
+
+

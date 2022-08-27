@@ -1,0 +1,124 @@
+.price {
+    position: relative;
+    font-size: 40px;
+}
+
+.argument {
+    color: gray;
+}
+
+.priceValue {
+    font-family: Comfortaa;
+    position: absolute;
+    right: 3px;
+    bottom: 1px;
+    font-weight: bold
+}
+
+.priceText {
+    font-size: 25px;
+
+    margin-right: 100px;
+}
+
+.itemText {
+    display: flex;
+    gap: 10px;
+    color: #c2c2c2;
+}
+
+.textInItem {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 20px;
+}
+
+.item {
+    position: relative;
+    width: 300px;
+    height: 500px;
+    color: #fff;
+    max-height: 500px;
+    flex: 0 0 300px;
+    margin-top: 15px;
+    margin-left: 15px;
+    z-index: 5;
+    border-radius: 20px;
+    transition: box-shadow 640ms ease-in, transform 300ms;
+    box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0);
+}
+
+.item:hover {
+    transform: translateY(-5px);
+}
+
+.content > img {
+    width: 270px;
+    height: 270px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.content {
+    font-family: ubuntu-name;
+    background: #262626;
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    z-index: 999;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 15px;
+}
+
+.platformimg {
+    width: 20px;
+    height: 20px;
+}
+
+.item::before,
+.item::after {
+    border-radius: 54px;
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 500px;
+    background: linear-gradient(45deg,
+    #ffff00, #00ff00, #0099ff, #001aff, #a200ff, #ff0055, #ff0000,
+    #ff0055, #ff0000, #ffff00, #00ff00, #0099ff, #001aff, #a200ff
+    );
+    transition: all 640ms;
+    filter: blur(0px);
+}
+
+.item:hover::after, .item:hover::before {
+    background: linear-gradient(45deg,
+    #ffff00, #00ff00, #0099ff, #001aff, #a200ff, #ff0055, #ff0000,
+    #ff0055, #ff0000, #ffff00, #00ff00, #0099ff, #001aff, #a200ff
+    );
+    background-size: 300%;
+    animation: border 12s linear infinite;
+}
+
+.item:hover::after {
+    filter: blur(100px);
+}
+
+
+.item:hover {
+    z-index: 10;
+    cursor: pointer;
+}
+
+@keyframes border {
+    0%, 100% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 250%;
+    }
+}
