@@ -119,6 +119,7 @@
     </div>
     <div class="desc-comments">
         <div class="description">
+            <h1>{item.title}</h1>
             {#each item.description.split(".").splice(0, item.description.split(".").length - 1) as line}
                 <span>{line}.</span>
             {/each}
