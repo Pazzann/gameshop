@@ -1,0 +1,47 @@
+.basket{
+   background: #141416;
+   height: 100%;
+}
+.basketpage{
+   background: #212125;
+   width: 60%;
+   height: 100%;
+   margin: auto;
+   padding: 10px;
+}
+.basketInfo{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 60px;
+}
+.basketInfo > span{
+   font-family: Comfortaa;
+   font-size: 30px;
+   color: white;
+}
+
+
+.sortButton:hover {
+   transform: scale(1.2);
+   background: #19a640;
+   cursor: pointer;
+}
+.sortButton {
+   border: solid 2px white;
+   display: flex;
+   align-items: center;
+   font-family: Comfortaa;
+   text-decoration: none;
+   border-radius: 8px;
+   min-height: 44px;
+   padding: 0 2rem;
+   background: #5dc47c;
+   color: white;
+   font-size: 23px;
+   transition: all 320ms;
+   width: 240px;
+   height: 50px;
+   z-index: 100;
+   text-align: center;
+}

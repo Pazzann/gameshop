@@ -14,9 +14,7 @@ export class ProductService {
   ) {}
   getAll() {
     return this.productRep.find({
-      relations: {
-        reviews: true,
-      },
+      relations: ['reviews', 'reviews.user'],
     });
   }
   getOne(id: number) {
@@ -67,9 +65,9 @@ export class ProductService {
     if (curUser.access !== 1)
       throw new BadRequestException("You've no rights to do this action!");
     const product = await this.productRep.findOneBy({ code: productId });
+    console.log(product);
     if (!product) throw new BadRequestException("This product doesn't exist!");
-
-    await product.remove();
+    await product.softRemove();
     return true;
   }
 }

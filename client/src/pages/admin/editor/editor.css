@@ -1,0 +1,109 @@
+.image-in-bar:hover{
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+    cursor: pointer;
+}
+.image-in-bar{
+    z-index: 200;
+    transition: all 320ms;
+}
+.image-ids-bar > div > img {
+     width: 200px;
+     height: 200px;
+     border-radius: 20px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     outline: 0px solid transparent;
+     transition: outline-color 100ms, outline-width 100ms;
+     object-fit: cover;
+ }
+
+.image-ids-bar {
+    overflow-x: auto;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    z-index: 1;
+}
+.editor{
+    font-family: Comfortaa;
+    color: white;
+    background: #141416;
+    height: 2000px;
+
+}
+.editpage{
+    background: #212125;
+    width: 60%;
+    margin: auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    height: 1000px;
+
+}
+
+.buttons > *{
+    border: solid 2px white;
+    display: flex;
+    align-items: center;
+    font-family: Comfortaa;
+    text-decoration: none;
+    border-radius: 8px;
+    min-height: 44px;
+    padding: 0 2rem;
+    background: #5dc47c;
+    color: white;
+    font-size: 23px;
+    transition: all 320ms;
+    width: 170px;
+    height: 50px;
+    z-index: 100;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.buttons{
+    display: flex;
+    gap: 20px;
+}
+
+.buttons > *:hover {
+    transform: scale(1.2);
+    background: #19a640;
+    cursor: pointer;
+}
+
+.editpage > textarea{
+    min-height: 200px;
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 200px;
+    outline: 2px solid white;
+    border-radius: 10px;
+    padding: 5px;
+    border: none;
+}
+.editpage > *{
+    font-family: Comfortaa;
+    color: white;
+    background: #212125;
+    font-size: 20px;
+}
+.editpage > input{
+    outline: 2px solid white;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+}
+.editpage > select{
+    outline: 2px solid white;
+    border: none;
+    padding: 5px;
+    border-radius: 10px;
+}
+

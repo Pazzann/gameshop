@@ -1,6 +1,7 @@
 @import "images.css";
 @import "info.css";
 @import "description.css";
+@import "comments.css";
 
 .invisible {
     visibility: hidden;
@@ -16,7 +17,8 @@
 }
 
 .desc-comments {
-    height: 800px;
+    background: #141416;
+    min-height: 10000%;
 }
 
 

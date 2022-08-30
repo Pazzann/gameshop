@@ -1,6 +1,7 @@
 import {
   BaseEntity,
   Column,
+  DeleteDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
@@ -31,4 +32,6 @@ export class ProductEntity extends BaseEntity {
   public type: GameType;
   @OneToMany(() => ReviewEntity, (review) => review.product)
   reviews: ReviewEntity[];
+  @DeleteDateColumn()
+  deletedAt?: Date;
 }

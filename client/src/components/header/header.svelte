@@ -3,13 +3,25 @@
     import {createEventDispatcher, onMount} from "svelte";
     import Cookies from "universal-cookie";
     import {Link} from "svelte-routing";
+    import SearchItem from "../searchItem/searchItem.svelte";
     import styles from "./header.css";
 
+    export let products;
+    let searchedProducts = [];
     const cookies = new Cookies();
     let loggedIn = false;
     let isAdmin = false;
     let searchValue;
     let user;
+    let timer;
+    let val='';
+
+    function debounce(v) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            handleSearchChange(v);
+        }, 100);
+    }
 
     onMount(async () => {
         const res = await fetch('http://localhost:3001/api/users/me', {headers: {authorization: `Bearer ${cookies.get("token")}`}});
@@ -30,9 +42,6 @@
         user = undefined;
     }
 
-    const pageDispatch = createEventDispatcher();
-
-
     const userDispatch = createEventDispatcher();
 
     function loadUser(user, loggedIn) {
@@ -42,6 +51,10 @@
         });
     }
 
+    function handleSearchChange(e) {
+        searchedProducts = products.filter(item => item.tags.some(tag => searchValue.toLowerCase().includes(tag.toLowerCase()))).splice(0, 5);
+
+    }
 </script>
 
 
@@ -53,16 +66,23 @@
                 <span>GAMESHOP</span>
             </div>
         </Link>
-
-
         <nav class="navbar">
-            <div class="search">
-                <input type="text" placeholder="Search..." bind:value={searchValue}/>
-            </div>
-            <Link to="/admin">
-                <button class="button" class:adminHidden={!isAdmin}> AdminPanel</button>
-            </Link>
 
+            <div class="search">
+                <input type="text" on:keyup={({ target: { value } }) => debounce(value)} placeholder="Search..." bind:value={searchValue}/>
+                {#if searchedProducts}
+                    <div class="data">
+                        {#each searchedProducts as sProduct}
+                            <SearchItem item={sProduct}></SearchItem>
+                        {/each}
+                    </div>
+                {/if}
+            </div>
+
+
+            <Link to="/admin">
+                <button class="button" class:adminHidden={!isAdmin}>Admin</button>
+            </Link>
             {#if !loggedIn}
                 <a
                         class="button"
@@ -71,6 +91,9 @@
                     login
                 </a>
             {:else}
+                <Link to="/basket">
+                    <button class="button">Basket</button>
+                </Link>
                 <Profile on:logout={logout} name={user.userName} id={user.userid} imgId={user.userImageId}/>
             {/if}
         </nav>

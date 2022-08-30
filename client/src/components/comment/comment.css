@@ -1,0 +1,111 @@
+
+.comment{
+    padding: 20px;
+    background: #262626;
+    width: 100%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comment > span{
+    color: #d7d7d7;
+    font-family: Comfortaa;
+    font-size: 30px;
+}
+
+.attachments > div > img {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 0px solid transparent;
+    transition: outline-color 100ms, outline-width 100ms;
+}
+
+.attachments {
+    overflow-x: auto;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    z-index: 1;
+}
+.viewable > img{
+    opacity: 1;
+    transform: scale(3.5);
+}
+
+.viewable{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rating{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.rating > img{
+    width: 40px;
+    height: 40px;
+}
+.author\+rating{
+    display: flex;
+    gap: 60px
+}
+
+.commentbutton{
+    border: solid 2px white;
+    display: flex;
+    align-items: center;
+    font-family: Comfortaa;
+    text-decoration: none;
+    border-radius: 8px;
+    min-height: 44px;
+    padding: 0 2rem;
+    background: #bd5dc4;
+    color: white;
+    font-size: 23px;
+    transition: all 320ms;
+    width: 160px;
+    height: 50px;
+    z-index: 100;
+    text-align: center;
+}
+
+.commentbutton:hover{
+    transform: scale(1.2);
+    background: #19a640;
+    cursor: pointer;
+}
+
+.textInComment{
+    background: #262626;
+    font-family: Comfortaa;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 150px;
+    color: #d7d7d7;
+    font-size: 30px;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    outline: 2px solid #3d3d3d;
+    transition: outline-width 320ms, outline-color 320ms;
+}
+
+.textInComment:focus, .textInComment:focus-visible{
+    outline: 2px solid white;
+}
+

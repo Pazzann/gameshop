@@ -1,0 +1,105 @@
+.comments{
+    background: #141416;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+}
+
+.sendform{
+    background: #262626;
+    width: 100%;
+    border-radius: 30px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+
+}
+
+
+.rating{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.rating > img{
+    width: 40px;
+    height: 40px;
+}
+
+.imageinInput:hover{
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+    cursor: pointer;
+}
+.imageinInput{
+    z-index: 200;
+    transition: all 320ms;
+}
+.submitbutton:hover {
+    transform: scale(1.2);
+    background: #19a640;
+    cursor: pointer;
+}
+.submitbutton {
+    border: solid 2px white;
+    display: flex;
+    align-items: center;
+    font-family: Comfortaa;
+    text-decoration: none;
+    border-radius: 8px;
+    min-height: 44px;
+    padding: 0 2rem;
+    background: #5dc47c;
+    color: white;
+    font-size: 23px;
+    transition: all 320ms;
+    width: 200px;
+    height: 50px;
+    z-index: 100;
+    text-align: center;
+}
+
+.newattachments > div > img {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 0px solid transparent;
+    transition: outline-color 100ms, outline-width 100ms;
+}
+
+.newattachments {
+    overflow-x: auto;
+    width: 100%;
+    height: 220px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    z-index: 1;
+}
+.topCommentStat{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.sendform > textarea{
+    background: #262626;
+    font-family: Comfortaa;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 150px;
+    color: #d7d7d7;
+    font-size: 30px;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    outline: none;
+    transition: outline-width 320ms, outline-color 320ms;
+}
+.sendform > textarea:focus, .sendform > textarea:focus-visible{
+    outline: 2px solid white;
+}

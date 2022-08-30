@@ -1,0 +1,23 @@
+.newButton:hover {
+    transform: scale(1.2);
+    background: #a67519;
+    cursor: pointer;
+}
+.newButton {
+    border: solid 2px white;
+    display: flex;
+    align-items: center;
+    font-family: Comfortaa;
+    text-decoration: none;
+    border-radius: 8px;
+    min-height: 44px;
+    padding: 0 2rem;
+    background: #c4af5d;
+    color: white;
+    font-size: 23px;
+    transition: all 320ms;
+    width: 170px;
+    height: 45px;
+    z-index: 100;
+    text-align: center;
+}

@@ -61,7 +61,7 @@
     transform: none;
 }
 
-.filters button {
+.filters > button {
     background: #262626;
     padding: 1rem;
     outline: none;
@@ -110,4 +110,38 @@
     flex-wrap: wrap;
     background: #141416;
     overflow-y: auto;
+}
+
+.filter__content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+.filter__content > span{
+    font-size: 30px;
+}
+.filter__content > button{
+    border: solid 2px white;
+    display: flex;
+    align-items: center;
+    font-family: Comfortaa;
+    text-decoration: none;
+    border-radius: 8px;
+    min-height: 44px;
+    padding: 0 2rem;
+    background: #5897b9;
+    color: white;
+    font-size: 23px;
+    transition: all 320ms;
+    width: 170px;
+    height: 50px;
+    z-index: 100;
+    text-align: center;
+}
+.filter__content > button:hover {
+    transform: scale(1.2);
+    background: #18656e;
+    cursor: pointer;
 }
